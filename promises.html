@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <h2>Random Quote:</h2>
+    <p id="quote">Loading...</p> <!-- Placeholder for the fetched quote -->
+
+    <script>
+        console.log("hi neelam");
+
+        fetch("https://api.freeapi.app/api/v1/public/quotes/quote/random")
+        .then(res => res.json())  // Convert response to JSON
+        .then(data => {
+            console.log("data aa gaya", data); // Still logs data to the console
+            document.getElementById("quote").innerText = data.data.quote; // Display the quote on the page
+        })
+        .catch(error => {
+            console.log("locha ho gaya", error);
+            document.getElementById("quote").innerText = "Error fetching quote.";
+        })
+        .finally(() => console.log("main toh chalunga"));
+
+        console.log("bye neelam");
+    </script>
+</body>
+</html>
